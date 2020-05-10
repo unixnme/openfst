@@ -1,6 +1,3 @@
-This is a fork from the official OpenFst that adds CMakeLists.txt file
-
----------------------------------------------------------------------------
 OpenFst is a library for constructing, combining, optimizing, and searching
 weighted finite-state transducers (FSTs).
 

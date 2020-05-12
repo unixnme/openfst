@@ -3,6 +3,7 @@ project(openfst)
 
 set(CMAKE_CXX_STANDARD 11)
 set(ENABLE_FAR TRUE)
+set(ENABLE_NGRAM TRUE)
 
 file(GLOB_RECURSE openfst_lib_src src/lib/*.cc)
 
@@ -19,6 +20,11 @@ if(ENABLE_FAR)
     file(GLOB_RECURSE openfst_far_src_main src/extensions/far/*main.cc)
     list(APPEND openfst_lib_src ${openfst_far_src})
 endif(ENABLE_FAR)
+
+if(ENABLE_NGRAM)
+    file(GLOB_RECURSE openfst_ngram_src src/extensions/ngram/*.cc)
+    list(APPEND openfst_lib_src ${openfst_ngram_src})
+endif(ENABLE_NGRAM)
 
 add_library(OPENFST_LIB ${openfst_lib_src})
 target_include_directories(OPENFST_LIB PUBLIC src/include)

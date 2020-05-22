@@ -38,3 +38,6 @@ endforeach(item ${openfst_bin_src})
 
 add_executable(rho_compose rho_compose/rho_compose.cc)
 target_link_libraries(rho_compose OPENFST_LIB)
+
+add_executable(phi_compose phi_compose/phi_compose.cc)
+target_link_libraries(phi_compose OPENFST_LIB)

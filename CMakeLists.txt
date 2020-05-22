@@ -35,3 +35,6 @@ foreach(item ${openfst_bin_src})
     add_executable(${binary} ${item} src/bin/${binary}-main.cc)
     target_link_libraries(${binary} OPENFST_LIB)
 endforeach(item ${openfst_bin_src})
+
+add_executable(rho_compose rho_compose/rho_compose.cc)
+target_link_libraries(rho_compose OPENFST_LIB)

@@ -10,7 +10,7 @@ For more details, refer to this [paper]()
 In CTC, there is a blank symbol `<blk>` which complicates token (T) graph a bit.
 Without the blank symbol, T graph will reduce to the following
 
-![alt text](ifst.png "Idea T Graph")
+![alt text](ifst.png "Identity T Graph")
 
 Essentially, this is just a simple acceptor with all possible tokens.
 With blank symbol, the T graph should look like below

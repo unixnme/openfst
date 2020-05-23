@@ -13,14 +13,10 @@ int main(int argc, const char** argv) {
     opts.matcher2 = new PM{ofst, fst::MATCH_INPUT, 1};
 
     fst::StdComposeFst cfst{*ifst, *ofst, opts};
+    fst::StdVectorFst composed{cfst};
+    composed.Write(argv[3]);
 
-    fst::FstPrinter<fst::StdArc> printer{cfst,
-                                         cfst.InputSymbols(),
-                                         cfst.OutputSymbols(),
-                                         nullptr,
-                                         false,
-                                         false,
-                                         "\t"};
-    printer.Print(std::cout, "");
+    delete ifst;
+    delete ofst;
     return 0;
 }

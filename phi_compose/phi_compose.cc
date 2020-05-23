@@ -10,7 +10,7 @@ int main(int argc, const char** argv) {
     fst::ComposeFstOptions<fst::StdArc, PM> opts;
     opts.gc_limit = 0;
     opts.matcher1 = new PM{ifst, fst::MATCH_NONE, fst::kNoLabel};
-    opts.matcher2 = new PM{ofst, fst::MATCH_INPUT, 1};
+    opts.matcher2 = new PM{ofst, fst::MATCH_INPUT, (int)ofst->InputSymbols()->Find("<phi>")};
 
     fst::StdComposeFst cfst{*ifst, *ofst, opts};
     fst::StdVectorFst composed{cfst};

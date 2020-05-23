@@ -79,3 +79,6 @@ In the second case, the L graph and the composed LG graph are shown below.
 
 ![alt text](lex.png "Simple grammar graph")
 ![alt text](LG.png "LG graph")
+
+In the above case, the `<epsilon>` transitions remain intact
+because OpenFST's generic composition treats `<epsilon>` as a special symbol.

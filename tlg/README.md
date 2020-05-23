@@ -1,4 +1,4 @@
-## Creating TLG graph for CTC models using OpenFST
+## Creating TLG Graph for CTC Models using OpenFST
 
 ### What is TLG?
 T stands for token. T graph maps CTC acoustic tokens to characters. 
@@ -30,3 +30,34 @@ From the T graph above, we will get output token sequence `<eps> a <eps> <eps> b
 Note that we take back off transition twice, yielding output token sequence length of 8 compared to input token sequence of 6.
 Removing `<eps>` output tokens, we get `a b b` as expected.
 
+### Expanding Backoff Arcs
+What if we want to represent the T graph without any backoff arcs?
+Below is the expanded T graph that we want.
+
+![alt text](tokens.png "CTC T Graph without Backoff transitions")
+
+Ah, it's a mess, even with just three of 26 alphabet characters.
+State 0 is the start state as usual. 
+State 1 represents `<space>` character.
+State 2, 3, and 4 each represents `a`, `b`, and `c` character, respectively.
+As you can see, there is no `<phi>` label.
+
+Why would we ever want to represent the T graph in this form?
+For one, OpenFST's shell binary `fstcompose` does not seem to support special matchers,
+so if we want to run composition from using the shell binary, we should keep it expanded.
+
+Below represents input token sequence `<blk> a a b <blk> b`.
+
+![alt text](input.png "Input token sequence")
+
+What would happen if we simply `fstcompose` this input with our T graph with backoff arcs?
+Answer: we get a blank graph, i.e., we can't successfully compose the two
+because `<phi>` label is taken as a regular symbol and hence no valid transition at `b` after `<blk> a a` transitions.
+
+What if we compose the expanded T graph with the input? Viola!
+
+![alt text](output.png "Output token sequence by composing input to expanded T")
+
+Projecting the output labels and ignoring `<eps>`, we obtain output token sequence `a b b` as expected.
+So, the question remains: how do we expand the T graph?
+For that, take a look at [phi_compose](../phi_compose) directory.

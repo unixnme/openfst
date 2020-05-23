@@ -62,3 +62,21 @@ What if we compose the expanded T graph with the same input? Viola!
 Projecting the output labels and ignoring `<eps>`, we obtain output token sequence `a b b` as expected.
 So, the question remains: how do we expand the T graph?
 For that, take a look at [phi_compose](../phi_compose) directory.
+
+### Lexicon and Grammar
+Suppose simple grammar G below.
+
+![alt text](3gram.png "Simple grammar graph")
+
+Here, `<eps>` represents backoff transition.
+
+We will compose G with two versions of lexicon L graphs. 
+In the first case, the L graph and composed LG graph are shown below.
+
+![alt text](lex2.png "Simple grammar graph")
+![alt text](LG2.png "LG graph")
+
+In the second case, the L graph and the composed LG graph are shown below.
+
+![alt text](lex.png "Simple grammar graph")
+![alt text](LG.png "LG graph")

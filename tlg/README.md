@@ -8,7 +8,7 @@ For more details, refer to this [paper]()
 
 #### Token Graph
 In CTC, there is a blank symbol `<blk>` which complicates token (T) graph a bit.
-Without the blank symbol, T graph will reduce to the following
+If we assume non-CTC tokens, we would obtain
 
 ![alt text](ifst.png "Identity T Graph")
 

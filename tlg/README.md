@@ -112,7 +112,7 @@ We now compose the two using phi-matcher.
 
 Next we create lexicon L graph.
 ```bash
-echo "apple pear banana" | python create_lex.py
+echo "an app be" | python create_lex.py
 ```
 This will create `lexicon.txt` and `lexicon.syms` files.
 Let's compile L graph first.

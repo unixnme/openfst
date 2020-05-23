@@ -26,8 +26,7 @@ See [Matchers](http://www.openfst.org/twiki/bin/view/FST/FstAdvancedUsage#Matche
 
 By convention, `<eps>` represents no-input and no-output.
 Say we start from state 0 and get input token sequence `<blk> a a b <blk> b`.
-From the T graph above, we will get output token sequence `<eps> a <eps> <eps> b <eps> <eps> b`.
-Note that we take back off transition twice, yielding output token sequence length of 8 compared to input token sequence of 6.
+From the T graph above, we will get output token sequence `<eps> a <eps> b <eps> b`.
 Removing `<eps>` output tokens, we get `a b b` as expected.
 
 ### Expanding Backoff Arcs

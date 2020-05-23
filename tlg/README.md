@@ -141,7 +141,7 @@ fstrelabel --relabel_ipairs=relabel.txt 3gram.fst G.fst
 
 We now phi-compose L and G to create LG graph.
 ```bash
-../phi_compose L.fst G.fst LG.fst
+./phi_compose L.fst G.fst LG.fst
 ```
 
 ![alt text](LG.png "CTC LG graph fully expanded")

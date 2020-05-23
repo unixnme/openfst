@@ -23,6 +23,6 @@ fstcompose input.fst output.fst composed.fst
 
 On contrary, phi-matcher composition yields
 ```bash
-./phi_compose input.fst output.fst 
+./phi_compose input.fst output.fst composed_phi.fst
 ```
 ![alt text](composed_phi.png "Composed graph with phi-matcher")

@@ -1,2 +1,2 @@
-apple pear
-banana
+an app
+be app

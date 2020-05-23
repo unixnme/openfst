@@ -87,8 +87,9 @@ because OpenFST's generic composition treats `<epsilon>` as a special symbol.
 Now we are ready to construct TLG graph for CTC.
 First, we create T graphs.
 ```bash
-echo "a b e l n p r" | python create_t.py
+echo "a b e n p" | python create_t.py
 ```
+
 This will create three files: `tokens.syms`, `tokens.txt`, and `tokens_self.txt`.
 Let's compile `tokens.txt` and `tokens_self.txt` into FSTs.
 `tokens.txt` is CTC's mapping from acoustic output token T to lexical character.
@@ -122,7 +123,7 @@ fstcompile --isymbols=tokens.syms --osymbols=lexicon.syms --keep_isymbols --keep
 ![alt text](L.png "CTC T expanded graph")
 
 One thing to note here is that we have to make sure repetitive space characters is non-emitting.
-This is because `<space> <space> p e a r <space> <space> <blk> <space>` should map to `pear` regardless of extra spaces.
+This is because `<space> <space> a n <space> <space> <blk> <space>` should map to `an` regardless of extra spaces.
 
 Finally, we create grammar G graph using KenLM.
 ```bash
@@ -148,7 +149,7 @@ We now phi-compose L and G to create LG graph.
 
 Lastly, we compose T with LG to obtain TLG graph.
 ```bash
-fstcompose T.fst LG.fst | fstminimize - TLG.fst
+fstarcsort LG.fst | fstcompose T.fst - | fstrmepsilon | fstdeterminize | fstminimize - TLG.fst
 ```
 
 ![alt text](TLG.png "CTC TLG graph fully expanded")

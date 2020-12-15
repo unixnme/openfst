@@ -35,3 +35,6 @@ foreach(item ${openfst_bin_src})
     add_executable(${binary} ${item} src/bin/${binary}-main.cc)
     target_link_libraries(${binary} OPENFST_LIB)
 endforeach(item ${openfst_bin_src})
+
+add_executable(fstphicompoose phi_compose/fstphicompose.cc)
+target_link_libraries(fstphicompoose OPENFST_LIB)

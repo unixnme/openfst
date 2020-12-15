@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(openfst)
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_BUILD_TYPE DEBUG)
 #set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-undefined,dynamic_lookup")
 
 option(ENABLE_FAR "enable far support" OFF)
@@ -36,5 +37,5 @@ foreach(item ${openfst_bin_src})
     target_link_libraries(${binary} OPENFST_LIB)
 endforeach(item ${openfst_bin_src})
 
-add_executable(fstphicompoose phi_compose/fstphicompose.cc)
-target_link_libraries(fstphicompoose OPENFST_LIB)
+add_executable(fstphicomoose phi_compose/fstphicompose.cc)
+target_link_libraries(fstphicomoose OPENFST_LIB)

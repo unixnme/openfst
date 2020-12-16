@@ -39,3 +39,6 @@ endforeach(item ${openfst_bin_src})
 
 add_executable(fstphicomoose phi_compose/fstphicompose.cc)
 target_link_libraries(fstphicomoose OPENFST_LIB)
+
+add_executable(fstarcweightsort arcsort/fstarcweightsort.cc)
+target_link_libraries(fstarcweightsort OPENFST_LIB)

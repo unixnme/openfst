@@ -42,3 +42,6 @@ target_link_libraries(fstphicomoose OPENFST_LIB)
 
 add_executable(fstarcweightsort arcsort/fstarcweightsort.cc)
 target_link_libraries(fstarcweightsort OPENFST_LIB)
+
+add_executable(test_matcher matcher/test_matcher.cc)
+target_link_libraries(test_matcher OPENFST_LIB)
